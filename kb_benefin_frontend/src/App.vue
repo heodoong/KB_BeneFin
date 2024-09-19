@@ -1,30 +1,49 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+const route = useRoute();
+
+const routeKey = computed(() => route.fullPath);
+const headerKey = computed(() => route.fullPath);
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Header :key="headerKey" />
+  <router-view :key="routeKey"></router-view>
+  <Footer />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style lang="" scoped>
+* {
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+section {
+  border: 1px solid;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+section {
+  height: 500px;
+}
+
+article {
+  width: 75%;
+
+  background-color: azure;
+  margin: 10px;
+  height: 90%;
+  float: left;
+  overflow: auto;
+
+}
+
+aside {
+  width: 20%;
+  background-color: #f4f4f1;
+  height: 90%;
+  /* display: inline-block; */
+  float: right;
 }
 </style>
